@@ -1,0 +1,6 @@
+name: ServerPause
+version: 1.0
+main: org.example.Main
+api-version: '26.1'
+author: CustomBuild
+description: Fully pauses server world ticking mechanisms when no players are online.
