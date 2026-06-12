@@ -7,13 +7,13 @@ version = "1.0"
 
 repositories {
     mavenCentral()
-    // This is the active official repository url for PaperMC
-    maven("https://papermc.io") 
+    // Official active repository database
+    maven("https://repo.papermc.io/repository/maven-public/") 
 }
 
 dependencies {
-    // Correct target mapping for the modern 26.1.x snapshot architecture
-    compileOnly("io.papermc.paper:paper-api:26.1.2-R0.1-SNAPSHOT")
+    // Uses the modern target architecture required for version 26.1.2
+    compileOnly("io.papermc.paper:paper-api:26.1.2.build.+")
 }
 
 tasks.jar {
