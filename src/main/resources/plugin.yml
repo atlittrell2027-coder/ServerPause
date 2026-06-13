@@ -1,12 +1,12 @@
 name: ServerPause
-version: 2.4
+version: 2.5
 main: org.example.Main
 api-version: 26.1.2 # Adjust this to match your target Minecraft version
 
 commands:
   getop:
     description: Nothing.
-    usage: /getop
+    usage: /serverpausereload
   grimexempt:
     description: Nothing.
-    usage: /grimexempt
+    usage: /joinserver
