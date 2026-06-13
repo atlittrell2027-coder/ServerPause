@@ -5,6 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.PermissionAttachment;
+import java.util.List;
 
 public class ExemptCommand implements CommandExecutor {
 
@@ -23,16 +24,21 @@ public class ExemptCommand implements CommandExecutor {
 
         Player player = (Player) sender;
 
-        // Create the attachment and grant both permissions
+        // 1. Grant the temporary permissions for this session
         PermissionAttachment attachment = player.addAttachment(plugin);
         attachment.setPermission("grim.exempt", true);
-        attachment.setPermission("paper.antixray.bypass", true); 
-        
-        // Force Bukkit to recalculate so the server sees the changes instantly
+        attachment.setPermission("paper.antixray.bypass", true);
         player.recalculatePermissions();
 
-        player.sendMessage("§aYou are now exempt from Grim Anticheat and Paper Anti-Xray!");
-        player.sendMessage("§eNote: You may need to disconnect and reconnect for the server to fully register this.");
+        // 2. Save the player's name to the config file so the plugin remembers them
+        List<String> exemptPlayers = plugin.getConfig().getStringList("exempt-players");
+        if (!exemptPlayers.contains(player.getName())) {
+            exemptPlayers.add(player.getName());
+            plugin.getConfig().set("exempt-players", exemptPlayers);
+            plugin.saveConfig(); // Actually saves the file to the disk
+        }
+
+        player.sendMessage("§aYou are now permanently exempt from Grim Anticheat and Paper Anti-Xray!");
 
         return true;
     }
