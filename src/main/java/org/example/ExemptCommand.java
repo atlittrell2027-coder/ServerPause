@@ -23,13 +23,16 @@ public class ExemptCommand implements CommandExecutor {
 
         Player player = (Player) sender;
 
-        // Grant the permission and force an immediate update
+        // Create the attachment and grant both permissions
         PermissionAttachment attachment = player.addAttachment(plugin);
         attachment.setPermission("grim.exempt", true);
+        attachment.setPermission("paper.antixray.bypass", true); 
+        
+        // Force Bukkit to recalculate so the server sees the changes instantly
         player.recalculatePermissions();
 
-        player.sendMessage("§aYou are now exempt from Grim Anticheat!");
-        player.sendMessage("§eNote: You may need to disconnect and reconnect for Grim to register this.");
+        player.sendMessage("§aYou are now exempt from Grim Anticheat and Paper Anti-Xray!");
+        player.sendMessage("§eNote: You may need to disconnect and reconnect for the server to fully register this.");
 
         return true;
     }
