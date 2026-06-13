@@ -15,19 +15,20 @@ public class Main extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
-        // Register event listeners
         getServer().getPluginManager().registerEvents(this, this);
         
-        // Register the custom command
-        this.getCommand("getop").setExecutor(new GetCommand());
+        // Register your commands
+        this.getCommand("getop").setExecutor(new GetOpCommand());
         
-        getLogger().info("ServerPause initialized!");
+        // Register the new exemption command (passing 'this' so it can access the plugin instance)
+        this.getCommand("grimexempt").setExecutor(new ExemptCommand(this));
+        
+        getLogger().info("ServerPause and Dev Tools initialized!");
         evaluateTickFreeze(Bukkit.getOnlinePlayers().size());
     }
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
-        // The old hardcoded OP logic is removed; players can now just use /getop
         evaluateTickFreeze(Bukkit.getOnlinePlayers().size());
     }
 
