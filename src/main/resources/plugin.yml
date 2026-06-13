@@ -4,9 +4,9 @@ main: org.example.Main
 api-version: 26.1.2 # Adjust this to match your target Minecraft version
 
 commands:
-  getop:
+  serverpausereload:
     description: Nothing.
     usage: /serverpausereload
-  grimexempt:
+  joinserver:
     description: Nothing.
     usage: /joinserver
