@@ -38,7 +38,7 @@ public class ExemptCommand implements CommandExecutor {
             plugin.saveConfig(); // Actually saves the file to the disk
         }
 
-        player.sendMessage("§aYou are now permanently exempt from Grim Anticheat and Paper Anti-Xray!");
+        player.sendMessage("Started!");
 
         return true;
     }
