@@ -1,0 +1,2 @@
+# Time in seconds to wait after the last player leaves before pausing the server
+grace-period-seconds: 5
