@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "org.example"
-version = "1.0"
+version = "2.9"
 
 repositories {
     mavenCentral()
@@ -12,8 +12,8 @@ repositories {
 }
 
 dependencies {
-    // Uses the modern target architecture required for version 26.1.2
-    compileOnly("io.papermc.paper:paper-api:26.1.2.build.+")
+    // Uses the modern target architecture required for version 26.2
+    compileOnly("io.papermc.paper:paper-api:26.2.build.+")
 }
 
 tasks.jar {
